@@ -521,6 +521,16 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     _fieldColor = fieldColor;
     self.fieldLabel.textColor = _fieldColor;
 }
+    
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.textField.textColor = _textColor;
+}
+    
+- (void)setPlaceHolderTextColor:(UIColor *)placeHolderTextColor {
+    _placeHolderTextColor = placeHolderTextColor;
+    self.textField.placeHolderTextColor = _placeHolderTextColor;
+}
 
 - (void)setFieldView:(UIView *)fieldView
 {

@@ -81,6 +81,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** Color of optional */
 @property (strong, nonatomic, nullable) IBInspectable UIColor *fieldColor;
 @property (copy, nonatomic, nullable) IBInspectable NSString *placeholderText;
+@property (strong, nonatomic, nullable) IBInspectable UIColor *textColor;
+@property (strong, nonatomic, nullable) IBInspectable UIColor *placeHolderTextColor;
 @property (strong, nonatomic, nullable) UIView *accessoryView;
 @property (assign, nonatomic) IBInspectable UIKeyboardType keyboardType;
 @property (assign, nonatomic) IBInspectable UITextAutocapitalizationType autocapitalizationType;
