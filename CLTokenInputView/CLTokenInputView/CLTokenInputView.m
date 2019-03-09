@@ -58,7 +58,8 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     self.tokens = [NSMutableArray arrayWithCapacity:20];
     self.tokenViews = [NSMutableArray arrayWithCapacity:20];
 
-    self.fieldColor = [UIColor lightGrayColor]; 
+    self.fieldColor = [UIColor lightGrayColor];
+    self.placeholderTextColor = [UIColor lightGrayColor];
     
     self.fieldLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     // NOTE: Explicitly not setting a font for the field label
@@ -291,7 +292,9 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     if (self.tokens.count > 0) {
         self.textField.placeholder = nil;
     } else {
-        self.textField.placeholder = self.placeholderText;
+        if (self.placeholderText != nil) {
+            self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeholderText attributes:@{NSForegroundColorAttributeName: self.placeholderTextColor}];
+        }
     }
 }
 
@@ -526,11 +529,13 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     _textColor = textColor;
     self.textField.textColor = _textColor;
 }
-    
-- (void)setPlaceHolderTextColor:(UIColor *)placeHolderTextColor {
-    _placeHolderTextColor = placeHolderTextColor;
-    self.textField.placeHolderTextColor = _placeHolderTextColor;
+
+
+- (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
+    _placeholderTextColor = placeholderTextColor;
+    [self updatePlaceholderTextVisibility];
 }
+
 
 - (void)setFieldView:(UIView *)fieldView
 {
