@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface CLTokenView : UIView <UIKeyInput>
+@interface CLTokenView : UIView <UIKeyInput,UITextInput>
 
 @property (weak, nonatomic, nullable) NSObject <CLTokenViewDelegate> *delegate;
 @property (assign, nonatomic) BOOL selected;

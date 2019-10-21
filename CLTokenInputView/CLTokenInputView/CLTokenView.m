@@ -239,6 +239,7 @@ static NSString *const UNSELECTED_LABEL_NO_COMMA_FORMAT = @"%@";
 
 - (void)deleteBackward
 {
+    NSLog(@"deleteBackward");
     [self.delegate tokenViewDidRequestDelete:self replaceWithText:nil];
 }
 
@@ -252,7 +253,170 @@ static NSString *const UNSELECTED_LABEL_NO_COMMA_FORMAT = @"%@";
     return UITextAutocorrectionTypeNo;
 }
 
+#pragma mark - UITextInput protocol
+@synthesize beginningOfDocument;
 
+@synthesize endOfDocument;
+
+@synthesize inputDelegate;
+
+@synthesize markedTextRange;
+
+@synthesize markedTextStyle;
+
+@synthesize selectedTextRange;
+
+@synthesize tokenizer;
+
+- (UITextWritingDirection)baseWritingDirectionForPosition:(nonnull UITextPosition *)position inDirection:(UITextStorageDirection)direction {
+    return UITextWritingDirectionLeftToRight;
+}
+
+- (CGRect)caretRectForPosition:(nonnull UITextPosition *)position {
+    return CGRectMake(0, 0, 10, 30);
+}
+
+- (nullable UITextRange *)characterRangeAtPoint:(CGPoint)point {
+    return nil;
+}
+
+- (nullable UITextRange *)characterRangeByExtendingPosition:(nonnull UITextPosition *)position inDirection:(UITextLayoutDirection)direction {
+    return nil;
+}
+
+- (nullable UITextPosition *)closestPositionToPoint:(CGPoint)point {
+    return nil;
+}
+
+- (nullable UITextPosition *)closestPositionToPoint:(CGPoint)point withinRange:(nonnull UITextRange *)range {
+    return nil;
+}
+
+- (NSComparisonResult)comparePosition:(nonnull UITextPosition *)position toPosition:(nonnull UITextPosition *)other {
+
+    return NSOrderedSame;
+}
+
+- (CGRect)firstRectForRange:(nonnull UITextRange *)range {
+    return [self bounds];
+}
+
+- (NSInteger)offsetFromPosition:(nonnull UITextPosition *)from toPosition:(nonnull UITextPosition *)toPosition {
+    return NSIntegerMax;
+}
+
+- (nullable UITextPosition *)positionFromPosition:(nonnull UITextPosition *)position inDirection:(UITextLayoutDirection)direction offset:(NSInteger)offset {
+    return nil;
+}
+
+- (nullable UITextPosition *)positionFromPosition:(nonnull UITextPosition *)position offset:(NSInteger)offset {
+    return nil;
+}
+
+- (nullable UITextPosition *)positionWithinRange:(nonnull UITextRange *)range farthestInDirection:(UITextLayoutDirection)direction {
+    return nil;
+}
+
+- (void)replaceRange:(nonnull UITextRange *)range withText:(nonnull NSString *)text {
+    //NSLog(@"replaceRange %@",text);
+}
+
+- (nonnull NSArray<UITextSelectionRect *> *)selectionRectsForRange:(nonnull UITextRange *)range {
+    NSArray *arr = NULL;
+    arr = @[];
+    return arr;
+}
+
+- (void)setBaseWritingDirection:(UITextWritingDirection)writingDirection forRange:(nonnull UITextRange *)range {
+     //self.textStore = markedText;
+}
+
+- (void)setMarkedText:(nullable NSString *)markedText selectedRange:(NSRange)selectedRange {
+    //NSLog(@"setMarkedText %@",markedText);
+}
+
+- (nullable NSString *)textInRange:(nonnull UITextRange *)range {
+    //NSLog(@"textInRange ");
+    return nil;
+}
+
+- (nullable UITextRange *)textRangeFromPosition:(nonnull UITextPosition *)fromPosition toPosition:(nonnull UITextPosition *)toPosition {
+    return nil;
+}
+
+
+- (void)unmarkText {
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+
+}
+
++ (nonnull instancetype)appearance {
+    return nil;
+}
+
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait {
+    return nil;
+}
+
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+    return nil;
+}
+
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedInInstancesOfClasses:(nonnull NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+    return nil;
+}
+
++ (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+    return nil;
+}
+
++ (nonnull instancetype)appearanceWhenContainedInInstancesOfClasses:(nonnull NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+    return nil;
+}
+
+- (void)traitCollectionDidChange:(nullable UITraitCollection *)previousTraitCollection {
+
+}
+
+- (CGPoint)convertPoint:(CGPoint)point fromCoordinateSpace:(nonnull id<UICoordinateSpace>)coordinateSpace {
+    return CGPointMake(0, 0);
+}
+
+- (CGPoint)convertPoint:(CGPoint)point toCoordinateSpace:(nonnull id<UICoordinateSpace>)coordinateSpace {
+    return CGPointMake(0, 0);
+}
+
+- (CGRect)convertRect:(CGRect)rect fromCoordinateSpace:(nonnull id<UICoordinateSpace>)coordinateSpace {
+    return CGRectMake(0, 0,1,1);
+}
+
+- (CGRect)convertRect:(CGRect)rect toCoordinateSpace:(nonnull id<UICoordinateSpace>)coordinateSpace {
+    return CGRectMake(0, 0,1,1);
+}
+
+- (void)didUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context withAnimationCoordinator:(nonnull UIFocusAnimationCoordinator *)coordinator {
+
+}
+
+- (void)setNeedsFocusUpdate {
+
+}
+
+- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context {
+    return YES;
+}
+
+- (void)updateFocusIfNeeded {
+
+}
+
+- (nonnull NSArray<id<UIFocusItem>> *)focusItemsInRect:(CGRect)rect {
+    NSArray *arr = NULL;
+    arr = @[];
+    return arr;
+}
 #pragma mark - First Responder (needed to capture keyboard)
 
 -(BOOL)canBecomeFirstResponder
